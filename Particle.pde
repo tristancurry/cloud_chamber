@@ -70,9 +70,9 @@ class Particle {
     velY = velY*(v_xy1/v_xy2);             //there's some maths here to keep the energy constant
 
 
-    velX = velX - _density*pow(abs(charge),2)*velX/mass;
-    velY = velY -_density*pow(abs(charge),2)*velY/mass;
-    velZ = velZ - _density*pow(abs(charge),2)*velZ/mass;
+    velX = velX - _density*pow(abs(charge),9)*velX/mass;
+    velY = velY -_density*pow(abs(charge),9)*velY/mass;
+    velZ = velZ - _density*pow(abs(charge),9)*velZ/mass;
       energy = 0.5*mass*(sq(velX)+sq(velY)+sq(velZ));
     }
     
@@ -83,7 +83,7 @@ class Particle {
     noStroke();
     fill(255 + 255*charge,255 - 255*charge,mass, 255*(100 - posZ)/100);
     if(energy > 1.0 && mass > 0){
-      ellipse(posX,posY,0,0);
+      ellipse(posX,posY,15,15);
     }
     
     
