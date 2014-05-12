@@ -32,13 +32,13 @@
 
 
 Particle particle1;
-float c  = 100;
+float c  = 200;
 int electronMass = 1;
 ArrayList particleList;
 ArrayList dropletList;
 
 void setup(){
-  size(400,400);
+  size(600,600);
   background(0);
   
   particleList = new ArrayList();
@@ -56,27 +56,28 @@ void draw(){
     particleList.add(newParticle);
   }
   
-  if(random(0,1)>0.99){
-    newAlpha(random(0,width),random(0,height),0,random(80000,200000),random(PI/32,PI/12),random(0,TWO_PI));
+  if(random(0,2)>1.96){
+    newAlpha(random(0,width),random(0,height),0,random(20000,75000),random(PI/32,PI/12),random(0,TWO_PI));
   }
     
-  if(random(0,1)>0.99){
+  if(random(0,2)>1.94){
     newBetaPlus(random(0,width),random(0,height),0,random(20,50),random(PI/32,PI/12),random(0,TWO_PI));
   }
     
-  if(random(0,1)>0.95){
+  if(random(0,1)>0.90){
     newBetaMinus(random(0,width),random(0,height),0,random(20,50),random(PI/32,PI/12),random(0,TWO_PI));
   }
     
   if(random(0,1)>0.98){
-    newGamma(random(0,width),random(0,height),0,random(105,900),random(PI/32,PI/12),random(0,TWO_PI));
+    newGamma(random(0,width),random(0,height),0,random(105,1500),random(PI/32,PI/12),random(0,TWO_PI));
   }
-    
+  
+  createBackground();
   
   if(particleList.size() != 0){
     for(int i = 0; i < particleList.size(); i++){
       Particle thisParticle = (Particle) particleList.get(i);
-      thisParticle.update(0.00,0,0.005);
+      thisParticle.update(0.12,0,0.020);
       thisParticle.display();
       trailDroplets(thisParticle.posX,thisParticle.posY,thisParticle.posZ, thisParticle.charge);
       if(random(0,1)>0.20 && thisParticle.charge == -1 && !thisParticle.isAnti){
@@ -101,7 +102,7 @@ void draw(){
         newBetaPlus(thisParticle.posX,thisParticle.posY,thisParticle.posZ,0.5*thisParticle.energy,thisParticle.alt - divergeAlt, thisParticle.azi - divergeAzi);
         particleList.remove(i);
       }
-      if(thisParticle.energy < 1.00){
+      if(thisParticle.energy < 0.88){
         particleList.remove(i);
       }
       if(thisParticle.posZ < -3 || thisParticle.posZ > 70){
@@ -121,14 +122,22 @@ if(dropletList.size() !=0){
     }
   }
 
-
+text(frameRate + " FPS",0,0);
   
 }
 
 void trailDroplets(float posX, float posY, float posZ, int charge){
   int chargeMultiplier = int(pow(abs(charge),1));
-  for(int i = 0; i < chargeMultiplier*int(random(3,16)); i++){
+  for(int i = 0; i < chargeMultiplier*int(random(3,3)); i++){
     Droplet newDroplet = new Droplet(posX + charge*3*quadrat(random(-1,1)),posY + charge*3*quadrat(random(-1,1)),posZ + charge*1*quadrat(random(-1,1)),1);
     dropletList.add(newDroplet);
+  }
+}
+
+void createBackground(){
+  for(int i = 0; i < 20; i++){
+    Droplet newDroplet = new Droplet(random(0,width), random(0,height), 43, 1);
+    dropletList.add(newDroplet);
+    
   }
 }

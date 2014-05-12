@@ -70,9 +70,9 @@ class Particle {
     velY = velY*(v_xy1/v_xy2);             //there's some maths here to keep the energy constant
 
 
-    velX = velX - _density*pow(abs(charge),12)*velX/mass;
-    velY = velY -_density*pow(abs(charge),12)*velY/mass;
-    velZ = velZ - _density*pow(abs(charge),12)*velZ/mass;
+    velX = velX - _density*pow(abs(charge),2)*velX/mass;
+    velY = velY -_density*pow(abs(charge),2)*velY/mass;
+    velZ = velZ - _density*pow(abs(charge),2)*velZ/mass;
       energy = 0.5*mass*(sq(velX)+sq(velY)+sq(velZ));
     }
     
