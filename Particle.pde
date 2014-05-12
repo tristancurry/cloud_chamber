@@ -81,9 +81,9 @@ class Particle {
   
   void display(){
     noStroke();
-    fill(255,0,0, 255*(100 - posZ)/100);
+    fill(255 + 255*charge,255 - 255*charge,mass, 255*(100 - posZ)/100);
     if(energy > 1.0 && mass > 0){
-      ellipse(posX,posY,1,1);
+      ellipse(posX,posY,0,0);
     }
     
     
