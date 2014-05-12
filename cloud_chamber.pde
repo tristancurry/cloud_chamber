@@ -84,7 +84,7 @@ void draw(){
         newBetaMinus(thisParticle.posX,thisParticle.posY,thisParticle.posZ,thisParticle.energy,thisParticle.alt + random(-PI/16.0,PI/16.0), thisParticle.azi + random(-PI/6.0,PI/6.0));
         particleList.remove(i);
       }
-      if(random(0,1)>0.70 && thisParticle.charge == 1 && thisParticle.isAnti){
+      if(random(0,1)>0.20 && thisParticle.charge == 1 && thisParticle.isAnti){
         thisParticle.computeAltAzi();
         newGamma(thisParticle.posX,thisParticle.posY,thisParticle.posZ,thisParticle.energy,thisParticle.alt + random(-PI/32.0,PI/32.0), thisParticle.azi + random(-PI/32.0,PI/32.0));
         particleList.remove(i);
