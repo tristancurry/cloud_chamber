@@ -83,7 +83,7 @@ class Particle {
     noStroke();
     fill(255 + 255*charge,255 - 255*charge,mass, 255*(100 - posZ)/100);
     if(energy > 1.0 && mass > 0){
-      ellipse(posX,posY,15,15);
+      ellipse(posX,posY,0,0);
     }
     
     

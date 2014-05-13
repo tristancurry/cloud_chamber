@@ -81,7 +81,7 @@ void draw(){
   if(particleList.size() != 0){
     for(int i = 0; i < particleList.size(); i++){
       Particle thisParticle = (Particle) particleList.get(i);
-      thisParticle.update(0.09,0,0.005);
+      thisParticle.update(0.00,0,0.005);
       thisParticle.display();
       
       trailDroplets(thisParticle.posX,thisParticle.posY,thisParticle.posZ, thisParticle.charge);
